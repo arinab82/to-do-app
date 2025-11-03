@@ -122,12 +122,12 @@ function PersianDatePicker({ value, onChange, placeholder }) {
   const jalaali = getJalaaliDate(currentDate);
   const daysInMonth = getDaysInJalaaliMonth(jalaali);
   
-  // محاسبه روز اول ماه
+
   const firstDayGregorian = toGregorian(jalaali.jy, jalaali.jm, 1);
   const firstDayDate = new Date(firstDayGregorian.gy, firstDayGregorian.gm - 1, firstDayGregorian.gd);
   const firstDayOfWeek = firstDayDate.getDay(); // 0 = Sunday, 6 = Saturday
-  
-  // تبدیل به جمعه‌محور (شنبه = 0)
+
+
   const firstDay = (firstDayOfWeek + 1) % 7;
 
   const days = [];
@@ -184,12 +184,12 @@ function PersianDatePicker({ value, onChange, placeholder }) {
             </div>
             
             <div className="days-grid">
-              {/* روزهای خالی قبل از شروع ماه */}
+           
               {Array.from({ length: firstDay }).map((_, index) => (
                 <div key={`empty-${index}`} className="day empty"></div>
               ))}
               
-              {/* روزهای ماه */}
+             
               {days.map(day => (
                 <div
                   key={day}

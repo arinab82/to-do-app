@@ -10,18 +10,44 @@
 
 :root {
   --primary-color: #6366f1;
+  --primary-light: #818cf8;
   --primary-dark: #4f46e5;
+  --primary-ultralight: #e0e7ff;
+  --primary-pastel: #c7d2fe;
+  
   --success-color: #10b981;
+  --success-light: #34d399;
   --warning-color: #f59e0b;
+  --warning-light: #fbbf24;
   --error-color: #ef4444;
-  --card-bg: rgba(255, 255, 255, 0.1);
-  --card-bg-dark: rgba(0, 0, 0, 0.2);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-muted: rgba(255, 255, 255, 0.5);
-  --border-color: rgba(255, 255, 255, 0.15);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  --shadow-large: 0 25px 80px rgba(0, 0, 0, 0.3);
+  --error-light: #f87171;
+  
+  --light-bg-primary: #f8fafc;
+  --light-bg-secondary: #ffffff;
+  --light-bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --light-card-bg: rgba(255, 255, 255, 0.98);
+  --light-card-bg-hover: rgba(255, 255, 255, 1);
+  --light-border-color: rgba(99, 102, 241, 0.1);
+  --light-border-hover: rgba(99, 102, 241, 0.25);
+  --light-text-primary: #1e293b;
+  --light-text-secondary: #475569;
+  --light-text-muted: #64748b;
+  --light-shadow: 0 8px 30px rgba(99, 102, 241, 0.08);
+  --light-shadow-large: 0 20px 50px rgba(99, 102, 241, 0.12);
+  --light-shadow-soft: 0 4px 20px rgba(99, 102, 241, 0.05);
+  --light-glass-bg: rgba(255, 255, 255, 0.92);
+  --light-card-glow: 0 0 0 1px rgba(99, 102, 241, 0.03);
+  
+  --dark-bg-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --dark-card-bg: rgba(255, 255, 255, 0.1);
+  --dark-card-bg-dark: rgba(0, 0, 0, 0.2);
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: rgba(255, 255, 255, 0.8);
+  --dark-text-muted: rgba(255, 255, 255, 0.6);
+  --dark-border-color: rgba(255, 255, 255, 0.2);
+  --dark-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --dark-shadow-large: 0 25px 80px rgba(0, 0, 0, 0.4);
+  
   --space-xs: 8px;
   --space-sm: 12px;
   --space-md: 16px;
@@ -37,18 +63,44 @@
   --font-handwriting: 'Vazirmatn', cursive;
   --font-modern: 'Shabnam', 'Vazirmatn', sans-serif;
   --font-simple: 'Shabnam', sans-serif;
+  
+  --bg-gradient: var(--light-bg-gradient);
+  --card-bg: var(--light-card-bg);
+  --card-bg-hover: var(--light-card-bg-hover);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --text-muted: var(--light-text-muted);
+  --border-color: var(--light-border-color);
+  --border-hover: var(--light-border-hover);
+  --shadow: var(--light-shadow);
+  --shadow-large: var(--light-shadow-large);
+  --shadow-soft: var(--light-shadow-soft);
+  --glass-bg: var(--light-glass-bg);
+  --card-glow: var(--light-card-glow);
 }
 
 .task-app {
   min-height: 100vh;
   padding: var(--space-xl);
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg-gradient);
   direction: rtl;
 }
 
 .task-app.dark-theme {
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --bg-gradient: var(--dark-bg-gradient);
+  --card-bg: var(--dark-card-bg);
+  --card-bg-hover: rgba(255, 255, 255, 0.15);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-muted: var(--dark-text-muted);
+  --border-color: var(--dark-border-color);
+  --border-hover: rgba(255, 255, 255, 0.3);
+  --shadow: var(--dark-shadow);
+  --shadow-large: var(--dark-shadow-large);
+  --shadow-soft: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --card-glow: none;
 }
 
 .task-app * {
@@ -107,7 +159,7 @@ h4 {
   font-family: var(--font-cute);
   font-size: 2.2rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   letter-spacing: -1px;
 }
@@ -119,7 +171,7 @@ h4 {
 }
 
 .control-btn {
-  background: var(--card-bg);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   padding: var(--space-sm);
@@ -130,12 +182,14 @@ h4 {
   align-items: center;
   justify-content: center;
   position: relative;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .control-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--card-bg-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
+  border-color: var(--border-hover);
 }
 
 .control-btn svg {
@@ -187,17 +241,15 @@ h4 {
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
   margin-bottom: var(--space-lg);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
   transition: all 0.3s ease;
-}
-
-.task-app.dark-theme .glass-card {
-  background: var(--card-bg-dark);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-large), var(--card-glow);
+  border-color: var(--border-hover);
+  background: var(--card-bg-hover);
 }
 
 .app-main {
@@ -222,7 +274,7 @@ h4 {
   width: 20px;
   height: 20px;
   color: var(--primary-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .input-row {
@@ -247,7 +299,7 @@ h4 {
 .form-field {
   font-family: var(--font-modern);
   padding: var(--space-md) var(--space-lg);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
@@ -256,6 +308,7 @@ h4 {
   outline: none;
   transition: all 0.3s ease;
   text-align: right;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .form-field::placeholder {
@@ -264,8 +317,8 @@ h4 {
 
 .form-field:focus {
   border-color: var(--primary-color);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: var(--card-bg);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), var(--shadow-soft), var(--card-glow);
 }
 
 .form-field.full-width-field {
@@ -287,11 +340,12 @@ h4 {
   gap: var(--space-sm);
   white-space: nowrap;
   height: fit-content;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
 .main-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
 }
 
 .main-btn svg {
@@ -327,8 +381,8 @@ h4 {
 
 .category-option,
 .priority-option {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid transparent;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   padding: var(--space-md);
   cursor: pointer;
@@ -337,6 +391,7 @@ h4 {
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .category-option::before,
@@ -359,9 +414,9 @@ h4 {
 
 .category-option:hover,
 .priority-option:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
   animation: bounce-gently 0.6s ease;
 }
 
@@ -379,10 +434,10 @@ h4 {
 
 .category-option.is-selected,
 .priority-option.is-selected {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--card-bg);
   border-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow), var(--card-glow);
 }
 
 .category-option-icon,
@@ -396,12 +451,13 @@ h4 {
   margin: 0 auto var(--space-sm);
   transition: all 0.3s ease;
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .category-option.is-selected .category-option-icon,
 .priority-option.is-selected .priority-option-icon {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .category-option-icon svg,
@@ -426,7 +482,6 @@ h4 {
   font-weight: 700;
 }
 
-/* استایل‌های جدید برای تقویم فارسی */
 .persian-date-picker-container {
   position: relative;
   width: 100%;
@@ -434,7 +489,7 @@ h4 {
 
 .date-input-display {
   padding: var(--space-md) var(--space-lg);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
@@ -447,11 +502,12 @@ h4 {
   align-items: center;
   gap: var(--space-sm);
   min-height: 48px;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .date-input-display:hover {
   border-color: var(--primary-color);
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--card-bg);
 }
 
 .date-input-icon {
@@ -460,7 +516,6 @@ h4 {
   opacity: 0.7;
 }
 
-/* مودال تمام صفحه با افکت بلور */
 .persian-date-picker-modal {
   position: fixed;
   top: 0;
@@ -481,7 +536,7 @@ h4 {
   right: 0;
   bottom: 0;
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(20px);
   animation: overlay-fade-in 0.3s ease;
 }
@@ -506,7 +561,7 @@ h4 {
   padding: var(--space-lg);
   width: 100%;
   max-width: 400px;
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-large), var(--card-glow);
   z-index: 10000;
   animation: date-picker-slide 0.3s ease;
 }
@@ -532,7 +587,7 @@ h4 {
 }
 
 .month-nav-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: var(--space-sm);
@@ -542,10 +597,11 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .month-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--card-bg-hover);
   transform: scale(1.1);
 }
 
@@ -593,12 +649,13 @@ h4 {
   transition: all 0.3s ease;
   font-size: 0.9rem;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid transparent;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .day:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg-hover);
   transform: scale(1.1);
   border-color: var(--primary-color);
 }
@@ -621,6 +678,7 @@ h4 {
   background: transparent;
   border: none;
   cursor: default;
+  box-shadow: none;
 }
 
 .day.empty:hover {
@@ -644,6 +702,7 @@ h4 {
   font-size: 0.9rem;
   font-weight: 500;
   flex: 1;
+  box-shadow: var(--shadow-soft);
 }
 
 .today-btn {
@@ -678,7 +737,8 @@ h4 {
   font-weight: 600;
   padding: 2px 6px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .filter-section {
@@ -714,7 +774,7 @@ h4 {
 
 .filter-button {
   font-family: var(--font-handwriting);
-  background: var(--card-bg);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
@@ -727,6 +787,7 @@ h4 {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .filter-button.active-filter {
@@ -736,7 +797,7 @@ h4 {
 }
 
 .filter-button:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--card-bg-hover);
   transform: translateY(-2px) scale(1.05);
 }
 
@@ -753,6 +814,7 @@ h4 {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow), var(--card-glow);
 }
 
 .stat-box::before {
@@ -793,7 +855,7 @@ h4 {
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: var(--space-xs);
-  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -830,17 +892,19 @@ h4 {
   backdrop-filter: blur(20px);
   flex-direction: row-reverse;
   position: relative;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .task-item:hover {
   transform: translateY(-3px) scale(1.01);
-  box-shadow: var(--shadow);
-  border-color: var(--primary-color);
+  box-shadow: var(--shadow), var(--card-glow);
+  border-color: var(--border-hover);
+  background: var(--card-bg-hover);
 }
 
 .task-item.is-completed {
-  opacity: 0.6;
-  background: rgba(255, 255, 255, 0.05);
+  opacity: 0.7;
+  background: var(--glass-bg);
 }
 
 .task-checkbox {
@@ -898,6 +962,7 @@ h4 {
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
   color: white;
+  box-shadow: var(--shadow-soft);
 }
 
 .info-badge:hover {
@@ -925,17 +990,18 @@ h4 {
 
 .tag-item {
   font-family: var(--font-handwriting);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   color: var(--text-secondary);
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 0.7rem;
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .tag-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--card-bg-hover);
   transform: translateY(-1px);
 }
 
@@ -965,6 +1031,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .delete-task-btn:hover {
@@ -1047,7 +1114,7 @@ h4 {
   width: 100%;
   max-height: 80vh;
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-large), var(--card-glow);
   animation: modal-slide-up 0.3s ease;
 }
 
@@ -1060,10 +1127,6 @@ h4 {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.task-app.dark-theme .trash-content {
-  background: var(--card-bg-dark);
 }
 
 .trash-header {
@@ -1085,7 +1148,7 @@ h4 {
 }
 
 .modal-close-btn {
-  background: var(--card-bg);
+  background: var(--glass-bg);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: var(--space-sm);
@@ -1095,10 +1158,11 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg-hover);
 }
 
 .trash-list {
@@ -1113,16 +1177,18 @@ h4 {
   align-items: center;
   padding: var(--space-lg);
   margin-bottom: var(--space-sm);
-  background: var(--card-bg);
+  background: var(--glass-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   flex-direction: row-reverse;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .trash-item:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow), var(--card-glow);
+  background: var(--card-bg);
 }
 
 .trash-item-info {
@@ -1150,12 +1216,13 @@ h4 {
 }
 
 .trash-item-category {
-  background: var(--card-bg);
+  background: var(--glass-bg);
   padding: 4px 10px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
-  color: white;
+  color: var(--text-primary);
   font-weight: 600;
+  box-shadow: var(--shadow-soft), var(--card-glow);
 }
 
 .trash-list::-webkit-scrollbar,
@@ -1165,7 +1232,7 @@ h4 {
 
 .trash-list::-webkit-scrollbar-track,
 .tasks-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   border-radius: 3px;
 }
 
